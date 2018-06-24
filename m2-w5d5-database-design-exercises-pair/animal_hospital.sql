@@ -230,6 +230,7 @@ insert into invoice (invoice_id, appointment_id, owner_id, sale_tax, invoice_dat
         values (2, 2, 1, '0.075', '4/10/2002', 'Hilltop Animal Hospital')
 
 
-select * from appointment
-join procedure on appointment.appointment_id = procedure.procedure_id
-        
+select * from owner
+join pet on owner.owner_id = pet.pet_id
+
+select * from animal_hospital
