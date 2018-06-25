@@ -20,9 +20,6 @@ drop table pet
 drop table phone
 drop table address
 
-
-
-
 create table pet (
         pet_id serial not null,
         pet_name varchar(35) not null,
@@ -206,19 +203,19 @@ insert into appointment(appointment_id, visit_date)
 select * from invoice
 
 insert into invoice (invoice_id, appointment_id, owner_id, sale_tax, invoice_date, hospital_name)
-        values (1, 1, 1, '0.075', '1/20/2002', 'Hilltop Animal Hospital')
+        values (8, 1, 1, '0.075', '1/20/2002', 'Hilltop Animal Hospital')
         
 insert into invoice (invoice_id, appointment_id, owner_id, sale_tax, invoice_date, hospital_name)
-        values (3, 2, 1, '0.075', '4/03/2002', 'Hilltop Animal Hospital')
+        values (6, 2, 1, '0.075', '4/03/2002', 'Hilltop Animal Hospital')
 
 insert into invoice (invoice_id, appointment_id, owner_id, sale_tax, invoice_date, hospital_name)
-        values (3, 3, 1, '0.075', '4/07/2002', 'Hilltop Animal Hospital')
+        values (4, 3, 1, '0.075', '4/07/2002', 'Hilltop Animal Hospital')
         
 insert into invoice (invoice_id, appointment_id, owner_id, sale_tax, invoice_date, hospital_name)
-        values (3, 4, 1, '0.075', '1/28/2002', 'Hilltop Animal Hospital')
+        values (3, 4, 2, '0.075', '1/28/2002', 'Hilltop Animal Hospital')
 
 insert into invoice (invoice_id, appointment_id, owner_id, sale_tax, invoice_date, hospital_name)
-        values (5, 5, 1, '0.075', '3/17/2002', 'Hilltop Animal Hospital')
+        values (5, 5, 2, '0.075', '3/17/2002', 'Hilltop Animal Hospital')
 
 insert into invoice (invoice_id, appointment_id, owner_id, sale_tax, invoice_date, hospital_name)
         values (1, 6, 1, '0.075', '1/30/2001', 'Hilltop Animal Hospital')
@@ -227,10 +224,86 @@ insert into invoice (invoice_id, appointment_id, owner_id, sale_tax, invoice_dat
         values (7, 7, 1, '0.075', '1/20/2002', 'Hilltop Animal Hospital')
 
 insert into invoice (invoice_id, appointment_id, owner_id, sale_tax, invoice_date, hospital_name)
-        values (2, 2, 1, '0.075', '4/10/2002', 'Hilltop Animal Hospital')
+        values (2, 2, 2, '0.075', '5/6/2002', 'Hilltop Animal Hospital')
 
+insert into invoice (invoice_id, appointment_id, owner_id, sale_tax, invoice_date, hospital_name)
+        values (9, 9, 2, '0.075', '5/6/2002', 'Hilltop Animal Hospital')
 
-select * from owner
-join pet on owner.owner_id = pet.pet_id
+select * from pet_owner
 
-select * from animal_hospital
+insert into pet_owner (owner_id, pet_id)
+        values (1,1)
+ 
+insert into pet_owner (owner_id, pet_id)
+        values (1,3)
+ 
+insert into pet_owner (owner_id, pet_id)
+        values (2,2)
+ 
+insert into pet_owner (owner_id, pet_id)
+        values (2,4)
+ 
+ select * from procedure_appointment
+ 
+insert into procedure_appointment(appointment_id, procedure_id)
+        values (1, 1)
+ 
+insert into procedure_appointment(appointment_id, procedure_id)
+        values (2, 10)
+ 
+insert into procedure_appointment(appointment_id, procedure_id)
+        values (3, 5)
+ 
+insert into procedure_appointment(appointment_id, procedure_id)
+        values (4, 8)
+ 
+insert into procedure_appointment(appointment_id, procedure_id)
+        values (5, 5)
+ 
+insert into procedure_appointment(appointment_id, procedure_id)
+        values (6, 1)
+ 
+insert into procedure_appointment(appointment_id, procedure_id)
+        values (7, 1)
+ 
+insert into procedure_appointment(appointment_id, procedure_id)
+        values (8, 20)
+ 
+insert into procedure_appointment(appointment_id, procedure_id)
+        values (9, 12)
+      
+Select * from pet_procedure
+
+insert into pet_procedure (procedure_id, pet_id)
+        values (1, 1)
+
+insert into pet_procedure (procedure_id, pet_id)
+        values (1, 3)
+
+insert into pet_procedure (procedure_id, pet_id)
+        values (1, 3)
+
+insert into pet_procedure (procedure_id, pet_id)
+        values (5, 1)
+
+insert into pet_procedure (procedure_id, pet_id)
+        values (5, 2)
+
+insert into pet_procedure (procedure_id, pet_id)
+        values (8, 2)
+
+insert into pet_procedure (procedure_id, pet_id)
+        values (10, 1)
+
+insert into pet_procedure (procedure_id, pet_id)
+        values (12, 4)
+
+insert into pet_procedure (procedure_id, pet_id)
+        values (20, 4)
+                 
+
+select * from pet
+join pet_procedure on pet.pet_id = pet_procedure.pet_id
+join procedure on pet_procedure.procedure_id = procedure.procedure_id
+
+select * from invoice
